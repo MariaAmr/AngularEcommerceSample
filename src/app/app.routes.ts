@@ -69,6 +69,7 @@ export const routes: Routes = [
       import("./pages/product-detail/product-detail.component").then(
         (m) => m.ProductDetailComponent
       ),
+    data: { prerender: false },
   },
   {
     path: "**",
