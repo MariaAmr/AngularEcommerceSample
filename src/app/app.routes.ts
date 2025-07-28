@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Error } from './components/error/error';
+import { getPrerenderParams } from './prerender';
 
 
 
@@ -69,7 +70,14 @@ export const routes: Routes = [
       import("./pages/product-detail/product-detail.component").then(
         (m) => m.ProductDetailComponent
       ),
-    data: { prerender: false },
+    providers: [
+      {
+        provide: "PRERENDER_PARAMS",
+        useValue: getPrerenderParams(), // For static prerendering
+        // OR for dynamic:
+        // useFactory: () => getDynamicPrerenderParams()
+      },
+    ],
   },
   {
     path: "**",
