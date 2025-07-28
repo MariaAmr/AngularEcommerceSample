@@ -1,0 +1,95 @@
+<!-- product-card.html -->
+
+    <div class="card hover:bg-base-200 transition-all bg-base-100 w-full h-full shadow-lg hover:shadow-xl dark:shadow-gray-800/50 rounded-2xl">
+      <figure class="relative">
+        <img
+          class="w-full h-[320px] object-contain bg-white"
+          [src]="product()?.image || 'assets/placeholder-product.png'"
+          [alt]="product()?.title || 'Product image'"
+          (error)="handleImageError($event)"
+        />
+        @if (product()?.rating) {
+          <div class="absolute top-2 left-2 badge badge-primary">
+            {{ product()?.rating?.rate | number:'1.1-1' }} ★
+          </div>
+        }
+      </figure>
+       
+
+          <div class="card-body">
+            <h2 class="card-title line-clamp-2 min-h-[3.5rem]">
+              {{ product()?.title }}
+            </h2>
+            
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-semibold text-green-600 dark:text-green-400">
+                {{ product()?.price | currency }}
+              </h3>
+              
+              @if (product()?.rating) {
+                <div class="flex items-center">
+                   <div class="flex items-center">
+          <div class="rating rating-xs">
+            @for (star of [1,2,3,4,5]; track star) {
+              <input 
+                type="radio" 
+                name="rating-{{product()?.id}}" 
+                class="mask mask-star-2 bg-yellow-400" 
+                [checked]="star <= Math.round(product()?.rating?.rate || 0)"
+                disabled
+              />
+            }
+          </div>
+          <span class="text-sm ml-1 text-gray-500">
+            {{ product()?.rating?.rate | number:'1.1-1' }}
+          </span>
+        </div>
+                </div>
+              }
+            </div>
+        
+            <p class="line-clamp-3 text-gray-600 dark:text-gray-300">
+              {{ product()?.description }}
+            </p>
+            
+            <div class="card-actions mt-4 w-full">
+              <div class="flex items-center gap-x-2 w-full justify-between">
+                <div class="flex items-center gap-x-2">
+                  <button 
+                    (click)="onClickNavigate()" 
+                    class="btn btn-ghost btn-sm btn-circle tooltip" 
+                    data-tip="View Details"
+                  >
+                    <fa-icon [icon]="faEye"></fa-icon>
+                  </button>
+                  
+                  <button
+                    (click)="toggleFavoriteItem()"
+                    class="btn btn-ghost btn-sm btn-circle tooltip"
+                    [class.text-red-500]="checkFavoriteItemAlreadyExist()"
+                    data-tip="Favorite"
+                    [disabled]="!product()"
+                  >
+                    <fa-icon [icon]="faHeart"></fa-icon>
+                  </button>
+                </div>
+                
+                <div class="badge badge-outline capitalize badge-primary">
+                  {{ product()?.category }}
+                </div>
+              </div>
+              
+              <button
+                (click)="addItem()"
+                class="mt-2 w-full btn btn-primary"
+                [class.btn-disabled]="checkItemAlreadyExist()"
+                [disabled]="checkItemAlreadyExist() || !product()"
+              >
+                <fa-icon [icon]="faCartShopping"></fa-icon>
+                {{ checkItemAlreadyExist() ? 'Already in Cart' : 'Add to Cart' }}
+              </button>
+            </div>
+          </div>
+        
+    </div>
+

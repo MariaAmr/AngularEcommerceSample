@@ -1,0 +1,125 @@
+<!-- navbar.html -->
+<nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <!-- Logo/Brand -->
+    <a routerLink="home" class="flex items-center space-x-3 rtl:space-x-reverse group">
+      <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">E-Commerce</span>
+    </a>
+
+    <!-- Right side items -->
+    <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <!-- Desktop Favorite, Cart, and Theme Toggle -->
+      <div class="hidden lg:flex items-center gap-x-2">
+        <a
+          routerLink="favorite-items"
+          class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500 p-2 relative"
+          routerLinkActive="text-blue-700 dark:text-blue-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <fa-icon [icon]="faHeart"></fa-icon>
+          @if (favoriteItemsCount() > 0) {
+            <div class="absolute -top-1 -right-1 bg-blue-700 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              {{ favoriteItemsCount() }}
+            </div>
+          }
+        </a>
+        <a
+          routerLink="shopping-cart"
+          class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500 p-2 relative"
+          routerLinkActive="text-blue-700 dark:text-blue-500"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <fa-icon [icon]="faCartShopping"></fa-icon>
+          @if (cartItemQuantity() > 0) {
+            <div class="absolute -top-1 -right-1 bg-blue-700 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              {{ cartItemQuantity() }}
+            </div>
+          }
+        </a>
+    <button 
+    (click)="themeService.toggleTheme()"
+    class="p-2 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+    aria-label="Toggle dark mode"
+  >
+    <fa-icon [icon]="(themeService.isDarkMode$ | async) ? faSun : faMoon"></fa-icon>
+  </button>
+      </div>
+
+      <!-- Mobile menu button -->
+      <button 
+        (click)="toggleMobileMenu()"
+        type="button" 
+        class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" 
+        aria-controls="navbar-sticky" 
+        [attr.aria-expanded]="isMobileMenuOpen"
+      >
+        <span class="sr-only">Open main menu</span>
+        <fa-icon [icon]="isMobileMenuOpen ? faXmark : faBars" class="w-5 h-5"></fa-icon>
+      </button>
+    </div>
+
+    <!-- Navigation Content -->
+    <div 
+      class="items-center justify-between w-full md:flex md:w-auto md:order-1" 
+      [class.hidden]="!isMobileMenuOpen" 
+      id="navbar-sticky"
+    >
+      <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <!-- Category Links -->
+        <li>
+          <a routerLink="home" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" routerLinkActive="text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:bg-blue-600 md:dark:bg-transparent" [routerLinkActiveOptions]="{ exact: true }">All</a>
+        </li>
+        <li>
+          <a routerLink="/men-clothing" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" routerLinkActive="text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:bg-blue-600 md:dark:bg-transparent" [routerLinkActiveOptions]="{ exact: true }">Men</a>
+        </li>
+        <li>
+          <a routerLink="women-clothing" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" routerLinkActive="text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:bg-blue-600 md:dark:bg-transparent" [routerLinkActiveOptions]="{ exact: true }">Women</a>
+        </li>
+        <li>
+          <a routerLink="jewelry" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" routerLinkActive="text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:bg-blue-600 md:dark:bg-transparent" [routerLinkActiveOptions]="{ exact: true }">Jewelry</a>
+        </li>
+        <li>
+          <a routerLink="electronics" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" routerLinkActive="text-white bg-blue-700 md:bg-transparent md:text-blue-700 dark:bg-blue-600 md:dark:bg-transparent" [routerLinkActiveOptions]="{ exact: true }">Electronics</a>
+        </li>
+
+        <!-- Mobile-only Favorite, Cart and Theme Toggle -->
+        <li class="md:hidden flex items-center gap-4 mt-2 pt-2 border-t border-gray-200 dark:border-gray-600">
+          <a
+            routerLink="favorite-items"
+            class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500 p-2 relative"
+            routerLinkActive="text-blue-700 dark:text-blue-500"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <fa-icon [icon]="faHeart"></fa-icon>
+            @if (favoriteItemsCount() > 0) {
+              <div class="absolute -top-1 -right-1 bg-blue-700 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {{ favoriteItemsCount() }}
+              </div>
+            }
+          </a>
+          <a
+            routerLink="shopping-cart"
+            class="text-gray-900 dark:text-white hover:text-blue-700 dark:hover:text-blue-500 p-2 relative"
+            routerLinkActive="text-blue-700 dark:text-blue-500"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <fa-icon [icon]="faCartShopping"></fa-icon>
+            @if (cartItemQuantity() > 0) {
+              <div class="absolute -top-1 -right-1 bg-blue-700 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {{ cartItemQuantity() }}
+              </div>
+            }
+          </a>
+           <button 
+    (click)="themeService.toggleTheme()"
+    class="p-2 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
+    aria-label="Toggle dark mode"
+  >
+    <fa-icon [icon]="(themeService.isDarkMode$ | async) ? faSun : faMoon"></fa-icon>
+  </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

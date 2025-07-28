@@ -1,0 +1,28 @@
+<app-search-bar></app-search-bar>
+<app-sort (sortChange)="onSortChange($event)"></app-sort>
+<div class="flex flex-col items-center pt-20 min-h-screen">
+  <div class="w-full max-w-7xl px-6 pb-10 mt-10">
+    @if (isLoading()) {
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 justify-center">
+        @for (item of [1,2,3,4]; track item) {
+          <app-product-card-skeleton />
+        }
+      </div>
+    } @else {
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-6 justify-center">
+        @for (product of productsToDisplay(); track product.id) {
+          <app-product-card [product]="product" />
+        }
+      </div>
+      
+      @if (searchState.isSearching() && productsToDisplay().length === 0) {
+        <div class="text-center py-20">
+          <p class="text-lg text-gray-500 dark:text-gray-400">
+            No products found for "{{ searchState.searchTerm() }}"
+          </p>
+        </div>
+      }
+    }
+    <div class="py-20"></div>
+  </div>
+</div>
