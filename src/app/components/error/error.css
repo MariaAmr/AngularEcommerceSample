@@ -1,0 +1,11 @@
+.bg-error{
+    background-image: url(https://assets-v2.lottiefiles.com/a/3455ed68-1151-11ee-9772-5b4c76d6674b/10CiT9v5M8.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 40vh;
+}
+button{
+    width: fit-content;
+    font-weight: 700;
+}

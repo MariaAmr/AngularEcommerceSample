@@ -1,44 +1,78 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { MenClothingComponent } from './pages/men-clothing/men-clothing.component';
-import { WomenClothingComponent } from './pages/women-clothing/women-clothing.component';
-import { JewelryComponent } from './pages/jewelry/jewelry.component';
-import { ElectronicsComponent } from './pages/electronics/electronics.component';
-import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
-import { FavoriteItemsComponent } from './pages/favorite-items/favorite-items.component';
-import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
+import { Error } from './components/error/error';
+
+
 
 export const routes: Routes = [
-  { path: "", title: "Home", redirectTo: "home", pathMatch: "prefix" },
-  { path: "home", title: "Home", component: Home },
+  {
+    path: "",
+    redirectTo: "home",
+    pathMatch: "full",
+  },
+  {
+    path: "home",
+    title: "Home",
+    loadComponent: () => import("./pages/home/home").then((m) => m.Home),
+  },
   {
     path: "men-clothing",
-    title: `Men's Clothings`,
-    component: MenClothingComponent,
-  },
-    {path: 'products/:id',
-    title: 'Product Details',
-    component: ProductDetailComponent
+    title: "Men's Clothing",
+    loadComponent: () =>
+      import("./pages/men-clothing/men-clothing.component").then(
+        (m) => m.MenClothingComponent
+      ),
   },
   {
     path: "women-clothing",
-    title: `Women's Clothings`,
-    component: WomenClothingComponent,
+    title: "Women's Clothing",
+    loadComponent: () =>
+      import("./pages/women-clothing/women-clothing.component").then(
+        (m) => m.WomenClothingComponent
+      ),
   },
-  { path: "jewelry", title: "Jewelry", component: JewelryComponent },
+  {
+    path: "jewelry",
+    title: "Jewelry",
+    loadComponent: () =>
+      import("./pages/jewelry/jewelry.component").then(
+        (m) => m.JewelryComponent
+      ),
+  },
   {
     path: "electronics",
     title: "Electronics",
-    component: ElectronicsComponent,
+    loadComponent: () =>
+      import("./pages/electronics/electronics.component").then(
+        (m) => m.ElectronicsComponent
+      ),
   },
   {
     path: "shopping-cart",
     title: "Shopping Cart",
-    component: ShoppingCartComponent,
+    loadComponent: () =>
+      import("./pages/shopping-cart/shopping-cart.component").then(
+        (m) => m.ShoppingCartComponent
+      ),
   },
   {
     path: "favorite-items",
     title: "Favorite Items",
-    component: FavoriteItemsComponent,
+    loadComponent: () =>
+      import("./pages/favorite-items/favorite-items.component").then(
+        (m) => m.FavoriteItemsComponent
+      ),
+  },
+  {
+    path: "products/:id",
+    title: "Product Details",
+    loadComponent: () =>
+      import("./pages/product-detail/product-detail.component").then(
+        (m) => m.ProductDetailComponent
+      ),
+  },
+  {
+    path: "**",
+    title: "Error",
+    component: Error,
   },
 ];
