@@ -1,7 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { Navbar } from "./components/navbar/navbar";
 import { Footer } from "./components/footer/footer";
-import { OnInit } from "@angular/core";
 import { initFlowbite } from "flowbite";
 import { RouterOutlet } from "@angular/router";
 
