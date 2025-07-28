@@ -2,7 +2,7 @@ import { Component, signal } from '@angular/core';
 import { Navbar } from "./components/navbar/navbar";
 import { Footer } from "./components/footer/footer";
 import { OnInit } from "@angular/core";
-import { initFlowbite } from "flowbite";
+
 import { RouterOutlet } from "@angular/router";
 
 
@@ -15,7 +15,5 @@ import { RouterOutlet } from "@angular/router";
 })
 export class App implements OnInit {
   protected readonly title = signal("ecommerce-tailwind");
-  ngOnInit(): void {
-    initFlowbite();
-  }
+
 }
