@@ -23,7 +23,6 @@ import { Meta, Title } from '@angular/platform-browser';
 import { FavoriteItemsLocalStorageService } from "../../services/favorite-items-local-storage.service";
 import { CommonModule } from '@angular/common';
 import { Product } from '../../../type';
-import { catchError, of } from 'rxjs';
 
 @Component({
   selector: "app-product-detail",
@@ -70,7 +69,7 @@ import { catchError, of } from 'rxjs';
                 </div>
               </div>
               <div
-                class="flex flex-col-reverse lg:flex-row gap-y-10 justify-between gap-x-10"
+                class="flex flex-col lg:flex-row gap-y-10 justify-between gap-x-10"
               >
                 <div class="w-full md:w-[70%]">
                   @if (loading()) {

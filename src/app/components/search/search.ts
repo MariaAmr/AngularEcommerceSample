@@ -12,7 +12,7 @@ import { CommonModule } from "@angular/common";
   imports: [CommonModule, FontAwesomeModule],
   template: `
     <div class="w-1/2 sm:w-1/3 max-w-7xl px-6 mt-25 mx-auto">
-      <div class="z-10 bg-white dark:bg-gray-900 py-4 px-6 shadow-sm">
+      <div class="z-10 bg-white dark:bg-gray-900 py-4 px-6 sm:px-4 shadow-sm">
         <div class="max-w-7xl mx-auto">
           <div class="relative">
             <div

@@ -16,69 +16,72 @@ components.
        o Dynamic star ratings (full/half/empty)
        o Price formatting with currency pipes
        o Category badges with custom styling
+
     - **Smart Filtering**
        o Category-based navigation (Men/Women/Electronics etc.)
        o Search functionality (can be easily added)
+
 #### **2. Shopping Experience**
     - **Cart System**
        o Add/remove items with quantity management
        o LocalStorage persistence
        o Visual indicators for cart items
+
     - **Wishlist/Favorites**
        o Heart icon toggles with color feedback
        o Persisted across sessions
+
 #### **3. UI/UX Highlights**
     - **Theming Engine**
        o DaisyUI + Tailwind integration
        o Dark/light mode with OS preference detection
        o Custom theme colors (primary/secondary)
+
     - **Responsive Design**
+       o Mobile-optimized product cards
+       o Adaptive navbar (collapsible on mobile)
+       o Hover effects and smooth transitions
 
+    -  **Accessibility**
+       - Semantic HTML structure
+       - Keyboard-navigable components
+       - ARIA labels for interactive elements
+  
+#### **4. Technical Innovations**
+    -  **Angular 20 Architecture**
+       - Standalone components
+       - Signals for reactive state
+       - Custom inject() services
+  
+    -  **Performance Optimizations**
+       - Lazy-loading ready
+       - Image error handling
+       - Efficient change detection
 
-```
-o Mobile-optimized product cards
-o Adaptive navbar (collapsible on mobile)
-o Hover effects and smooth transitions
-```
-- **Accessibility**
-    o Semantic HTML structure
-    o Keyboard-navigable components
-    o ARIA labels for interactive elements
-**4. Technical Innovations**
-- **Angular 20 Architecture**
-o Standalone components
-o Signals for reactive state
-o Custom inject() services
-- **Performance Optimizations**
-o Lazy-loading ready
-o Image error handling
-o Efficient change detection
-- **State Management**
-o Shopping cart service
-o Favorites service
-o Theme service with BehaviorSubject
+    - **State Management**
+       - Shopping cart service
+       - Favorites service
+       - Theme service with BehaviorSubject
 
-**Potential Extensions**
+## **Potential Extensions**
 
 1. **User Accounts**
-    o Login/auth with Firebase
-    o Purchase history
+    - Login/auth with Firebase
+    - Purchase history
 2. **Checkout Flow**
-    o Stripe/PayPal integration
-    o Address management
-
-
+    - Stripe/PayPal integration
+    - Address management
 3. **Admin Dashboard**
-    o Product management
-    o Order tracking
+    - Product management
+    - Order tracking
 4. **Advanced Features**
-    o Product reviews
-    o Recommendation engine
-    o Inventory alerts
+    - Product reviews
+    - Recommendation engine
+    - Inventory alerts
 
 ## **Tech Stack**
 
-**Frontend Styling Tools**
+#### **Frontend Styling Tools**
 ```
   o Angular 19 
   o Tailwind CSS 4 
@@ -91,7 +94,7 @@ o Theme service with BehaviorSubject
   o Animations 
   o Standalone APIs
 ```
-This project demonstrates professional-grade Angular development with attention to:
+**This project demonstrates professional-grade Angular development with attention to:**
 
 ✔ **Clean Code** (Services, Signals, Typing)
 

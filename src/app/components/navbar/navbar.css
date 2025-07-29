@@ -1,0 +1,7 @@
+.router-link-active {
+  @apply text-blue-500 dark:text-blue-400;
+}
+
+.router-link-active-exact {
+  @apply text-blue-500 dark:text-blue-400;
+}
